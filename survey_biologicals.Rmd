@@ -1,0 +1,312 @@
+---
+title: "survey_biological"
+author: "Fonseca"
+date: "4/26/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r cars}
+library(readxl)
+survey_data <- read_excel("survey_data.xlsx", sheet = "Data 4.21.2020")
+survey_data1 <- data.frame(survey_data)
+```
+
+Contingency table Years*FUA-MSC:
+
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t1 <- table(survey_data$Years,survey_data$"FUA-MSC")
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t1 <- as.data.frame.matrix(t1)
+t2 <- t1 %>%  mutate(sumcol2_3= t1[,2]+t1[,3])
+rownames(t2)[1] <- "10-20 years"
+rownames(t2)[2] <- "5-10 years	"
+rownames(t2)[3] <- "Greater than 20 years	"
+rownames(t2)[4] <- "Less than 5 years"
+t2 <- t2[x,]
+
+
+kable(t2, caption = "Contingency table Years*FUA-MSC") 
+```
+
+Contingency table FUBM-MSC:
+
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t3 <- table(survey_data$Years,survey_data$"FUBM-MSC")
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t3 <- as.data.frame.matrix(t3)
+t4 <- t3 %>%  mutate(sumcol2_3= t3[,2]+t3[,3])
+rownames(t4)[1] <- "10-20 years"
+rownames(t4)[2] <- "5-10 years	"
+rownames(t4)[3] <- "Greater than 20 years	"
+rownames(t4)[4] <- "Less than 5 years"
+t4 <- t4[x,]
+
+
+kable(t4, caption = "Contingency table Years*FUBM-MSC") 
+```
+
+Contingency table	Years*FU-PRP
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t5 <- table(survey_data$Years,survey_data$"FU-PRP")
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t5 <- as.data.frame.matrix(t5)
+t6 <- t5 %>%  mutate(sumcol2_3= t5[,2]+t5[,3])
+rownames(t6)[1] <- "10-20 years"
+rownames(t6)[2] <- "5-10 years	"
+rownames(t6)[3] <- "Greater than 20 years	"
+rownames(t6)[4] <- "Less than 5 years"
+t6 <- t6[x,]
+
+
+kable(t6, caption = "Contingency table Years*FU-PRP") 
+```
+
+Contingency table	Years*FU-IRAP
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t7 <- table(survey_data$Years,survey_data$"FU-IRAP")
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t7 <- as.data.frame.matrix(t7)
+t8 <- t7 %>%  mutate(sumcol2_3= t7[,2]+t7[,3])
+rownames(t8)[1] <- "10-20 years"
+rownames(t8)[2] <- "5-10 years	"
+rownames(t8)[3] <- "Greater than 20 years	"
+rownames(t8)[4] <- "Less than 5 years"
+t8 <- t8[x,]
+
+
+kable(t8, caption = "Contingency table Years*FU-IRAP") 
+```
+
+Contingency table	Years*FU-PS
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t9 <- table(survey_data$Years,survey_data$"FU-PS")
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t9 <- as.data.frame.matrix(t9)
+t10 <- t9 %>%  mutate(sumcol2_3= t9[,2]+t9[,3])
+rownames(t10)[1] <- "10-20 years"
+rownames(t10)[2] <- "5-10 years	"
+rownames(t10)[3] <- "Greater than 20 years	"
+rownames(t10)[4] <- "Less than 5 years"
+t10 <- t10[x,]
+
+
+kable(t10, caption = "Contingency table Years*FU-PS") 
+```
+
+Contingency table	Specialty*FUA-MSC
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t11 <- table(survey_data$Specialty,survey_data$"FUA-MSC")
+
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+#x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t11 <- as.data.frame.matrix(t11)
+t12 <- t11 %>%  mutate(sumcol2_3= t11[,2]+t11[,3])
+rownames(t12)[1] <- "ACVS diplomate (large animal/equine)"
+rownames(t12)[2] <- "ACVSMR diplomate (equine)	"
+rownames(t12)[3] <- "Both ACVS and ACVSMR diplomate	"
+#rownames(t12)[4] <- "Both ACVS and ACVSMR diplomate"
+#t12 <- t12[x,]
+
+
+kable(t12, caption = "Contingency table Specialty*FUA-MSC") 
+```
+
+Contingency table	Specialty*FUBM-MSC
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t13 <- table(survey_data$Specialty,survey_data$"FUBM-MSC")
+
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+#x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t13 <- as.data.frame.matrix(t13)
+t14 <- t13 %>%  mutate(sumcol2_3= t13[,2]+t13[,3])
+rownames(t14)[1] <- "ACVS diplomate (large animal/equine)"
+rownames(t14)[2] <- "ACVSMR diplomate (equine)	"
+rownames(t14)[3] <- "Both ACVS and ACVSMR diplomate	"
+#rownames(t12)[4] <- "Both ACVS and ACVSMR diplomate"
+#t12 <- t12[x,]
+
+
+kable(t14, caption = "Contingency table Specialty*FUBM-MSC") 
+```
+
+Contingency table	Specialty*FU-PRP
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t15 <- table(survey_data$Specialty,survey_data$"FU-PRP")
+
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+#x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t15 <- as.data.frame.matrix(t15)
+t16 <- t15 %>%  mutate(sumcol2_3= t15[,2]+t15[,3])
+rownames(t16)[1] <- "ACVS diplomate (large animal/equine)"
+rownames(t16)[2] <- "ACVSMR diplomate (equine)	"
+rownames(t16)[3] <- "Both ACVS and ACVSMR diplomate	"
+#rownames(t12)[4] <- "Both ACVS and ACVSMR diplomate"
+#t12 <- t12[x,]
+
+
+kable(t16, caption = "Contingency table Specialty*FU-PRP") 
+```
+
+
+Contingency table	Specialty*FU-IRAP
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t17 <- table(survey_data$Specialty,survey_data$"FU-IRAP")
+
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+#x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t17 <- as.data.frame.matrix(t17)
+t18 <- t17 %>%  mutate(sumcol2_3= t17[,2]+t17[,3])
+rownames(t18)[1] <- "ACVS diplomate (large animal/equine)"
+rownames(t18)[2] <- "ACVSMR diplomate (equine)	"
+rownames(t18)[3] <- "Both ACVS and ACVSMR diplomate	"
+#rownames(t12)[4] <- "Both ACVS and ACVSMR diplomate"
+#t12 <- t12[x,]
+
+
+kable(t18, caption = "Contingency table Specialty*FU-IRAP") 
+```
+
+Contingency table	Specialty*FU-PS
+```{r , echo=T}
+library(dplyr)
+library(knitr)
+#Create cross table
+t19 <- table(survey_data$Specialty,survey_data$"FU-PS")
+
+#Selecting order for rows and cols
+#y <- c("Greater than once/month", "Greater than 5 times/month", "1-5 times/year", "5-10 times/year", "Never")
+#x <- c("Less than 5 years", "5-10 years", "10-20 years", "Greater than 20 years")
+#t1 <- addmargins(t1)
+t19 <- as.data.frame.matrix(t19)
+t20 <- t19 %>%  mutate(sumcol2_3= t19[,2]+t19[,3])
+rownames(t20)[1] <- "ACVS diplomate (large animal/equine)"
+rownames(t20)[2] <- "ACVSMR diplomate (equine)	"
+rownames(t20)[3] <- "Both ACVS and ACVSMR diplomate	"
+#rownames(t12)[4] <- "Both ACVS and ACVSMR diplomate"
+#t12 <- t12[x,]
+
+
+kable(t20, caption = "Contingency table Specialty*FU-PS") 
+
+```
+
+Frequency of use of all biologics 
+
+Frequency of FUA.MSC
+```{r , echo=T}
+library(ggplot2)
+library(dplyr)
+library(rlang)
+library(knitr)
+
+FUA.MSC <- survey_data1 %>% group_by(FUA.MSC)%>%summarise(Frecuency=length(FUA.MSC), Percentaje = (Frecuency/152)*100)
+
+kable(FUA.MSC, caption = "Frequency of FUA.MSC")  
+
+FUA.MSC %>% ggplot(aes(x=reorder(`FUA.MSC`,Frecuency),y=Frecuency, fill=`FUA.MSC`))+geom_bar(stat="identity")+ xlab("FUA.MSC")+ylab("Total Number")+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+Frequency of FUBM.MSC
+
+
+```{r , echo=T}
+library(ggplot2)
+library(dplyr)
+library(rlang)
+library(knitr)
+
+FUBM.MSC <- survey_data1 %>% group_by(FUBM.MSC)%>%summarise(Frecuency=length(FUBM.MSC), Percentaje = (Frecuency/152)*100)
+
+kable(FUBM.MSC, caption = "Frequency of FUBM.MSC")  
+
+FUBM.MSC %>% ggplot(aes(x=reorder(`FUBM.MSC`,Frecuency),y=Frecuency, fill= `FUBM.MSC`))+geom_bar(stat="identity")+ xlab("FUBM.MSC")+ylab("Total Number")+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Frequency FSC.IA
+
+```{r , echo=T}
+library(ggplot2)
+library(dplyr)
+library(rlang)
+library(knitr)
+
+FSC.IA <- survey_data1 %>% group_by(FSC.IA)%>%summarise(Frecuency=length(FSC.IA), Percentaje = (Frecuency/152)*100)
+
+kable(FSC.IA, caption = "Frequency FSC.IA")  
+
+FSC.IA %>% ggplot(aes(x=reorder(`FSC.IA`,Frecuency),y=Frecuency, fill= `FSC.IA`))+geom_bar(stat="identity")+ xlab("FSC.IA")+ylab("Total Number")+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Frequency FSC.IA by Years
+
+```{r , echo=T}
+library(ggplot2)
+library(dplyr)
+library(rlang)
+library(knitr)
+
+FSC.IA <- survey_data1 %>% group_by(Years,FSC.IA)%>%summarise(Frecuency=length(FSC.IA), Percentaje = (Frecuency/152)*100)
+
+
+
+FSC.IA %>% ggplot(aes(x=reorder(`FSC.IA`,Frecuency),y=Frecuency, fill= `FSC.IA`))+geom_bar(stat="identity")+ xlab("FSC.IA")+ylab("Total Number")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+facet_wrap( ~ Years, ncol=2)
+```
+
