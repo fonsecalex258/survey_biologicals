@@ -1,6 +1,6 @@
 ---
 title: "survey_biological for Aimee and Lindsey"
-author:"Brayan and Lindsay"
+author:"Lindsay and Brayan"
 date: "4/26/2020"
 output:
   html_document: default
