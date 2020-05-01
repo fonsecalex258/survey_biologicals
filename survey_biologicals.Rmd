@@ -1,6 +1,6 @@
 ---
 title: "survey_biological for Aimee and Lindsey"
-author:"Lindsay and Brayan"
+#author:"LindsayandBrayan"
 date: "4/26/2020"
 output:
   html_document: default
@@ -308,5 +308,48 @@ FSC.IA <- survey_data1 %>% group_by(Years,FSC.IA)%>%summarise(Frecuency=length(F
 
 
 FSC.IA %>% ggplot(aes(x=reorder(`FSC.IA`,Frecuency),y=Frecuency, fill= `FSC.IA`))+geom_bar(stat="identity")+ xlab("FSC.IA")+ylab("Total Number")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+facet_wrap( ~ Years, ncol=2)
+```
+
+
+differences based on biologicals according to condition
+
+```{r , echo=T}
+library(dplyr)
+library(readxl)
+kruskal_survey <- read_excel("kruskal_survey.xlsx")
+kruskal_survey1 <- kruskal_survey %>% filter(scale!="NA")
+### Order levels of the factor; otherwise R will alphabetize them
+
+kruskal_survey1$Biologic <- factor(kruskal_survey1$Biologic,
+                      levels=unique(kruskal_survey1$Biologic))
+#####witout blank and N/A
+kruskal_survey1$scale = factor(kruskal_survey1$scale,
+                       ordered = TRUE)
+crosst <- xtabs( ~ Biologic + scale,
+       data = kruskal_survey1)
+ crosst
+ 
+#####with blank and N/A
+kruskal_survey$scale = factor(kruskal_survey$scale,
+                       ordered = TRUE)
+crosst1 <- xtabs( ~ Biologic + scale,
+       data = kruskal_survey)
+ crosst1
+ 
+#######
+library(lattice)
+
+histogram(~ scale | Biologic,
+          data=kruskal_survey1,
+          layout=c(1,4)      #  columns and rows of individual plots
+          ) 
+ #######Kruskal test
+
+kruskal.test(scale ~ Biologic,
+             data = kruskal_survey1)
+######Post-hoc test: Dunn test 
+### Dunn test
+
+
 ```
 
